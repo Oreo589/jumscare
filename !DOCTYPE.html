@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prank Jumpscare</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            margin: 0;
+        }
+        #prankButton {
+            font-size: 24px;
+            padding: 15px 30px;
+            cursor: pointer;
+            border: none;
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+        }
+        #scaryImage {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="prankButton">Click Me</button>
+    <img id="scaryImage" src="https://i.ebayimg.com/images/g/G1IAAOSwkW5lURr8/s-l1200.jpg" alt="Scary Image">
+    <audio id="jumpscareSound">
+        <source src="file:///D:/final_60108db6919bc200b087a3a2_239343%20(4).mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        document.getElementById("prankButton").addEventListener("click", function() {
+            let sound = document.getElementById("jumpscareSound");
+            let image = document.getElementById("scaryImage");
+
+            // Force audio to play
+            sound.play().catch(error => {
+                console.log("Audio play failed:", error);
+            });
+
+            // Show scary image
+            image.style.display = "block";
+
+            // Hide image after 3 seconds
+            setTimeout(() => {
+                image.style.display = "none";
+            }, 3000);
+        });
+    </script>
+
+</body>
+</html>
